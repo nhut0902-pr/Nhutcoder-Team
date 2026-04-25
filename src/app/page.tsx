@@ -1,16 +1,19 @@
+"use client";
+
 import { motion } from 'motion/react';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
-import ThreeCanvas from './components/ThreeCanvas';
+import Image from 'next/image';
+import ThreeCanvas from '../components/ThreeCanvas';
 
-export default function App() {
+export default function Page() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <div className="bg-[#010a13] text-slate-100 min-h-screen relative overflow-x-hidden font-sans flex flex-col selection:bg-teal-500/30">
       {/* Background Atmosphere - Updated to Teal/Orange */}
-      <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-teal-600/10 rounded-full blur-[150px] pointer-events-none animate-pulse" />
-      <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-orange-600/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-[#16A394]/10 rounded-full blur-[150px] pointer-events-none animate-pulse" />
+      <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-[#F97316]/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9IiMzMzQxNTUiIGZpbGwtb3BhY2l0eT0iMC4xNSIv+PC9zdmc+')] opacity-30 pointer-events-none" />
 
       {/* --- HEADER --- */}
@@ -21,34 +24,34 @@ export default function App() {
         className="relative z-50 flex justify-between items-center px-4 md:px-12 py-6 lg:py-10"
       >
         <div className="flex items-center gap-3 group cursor-pointer">
-          {/* Custom SVG Logo based on the provided image */}
-          <div className="relative w-12 h-12 flex items-center justify-center group-hover:scale-110 transition-transform">
-            <svg viewBox="0 0 100 100" className="w-full h-full">
-              {/* Curly Braces (Orange) */}
-              <text x="0" y="70" fontSize="80" fill="#F97316" fontWeight="bold" className="font-serif">{"{"}</text>
-              <text x="75" y="70" fontSize="80" fill="#F97316" fontWeight="bold" className="font-serif">{"}"}</text>
-              {/* NCT Letters (Teal) */}
-              <path d="M35 35 L35 65 M35 35 L65 65 M65 35 L65 65" stroke="#16A394" strokeWidth="8" fill="none" />
-            </svg>
+          {/* Logo from Image */}
+          <div className="relative w-12 h-12 flex items-center justify-center group-hover:scale-110 transition-transform overflow-hidden rounded-lg">
+             <Image
+               src="/logo.png"
+               alt="NhutCoder Team Logo"
+               width={48}
+               height={48}
+               className="object-contain"
+             />
           </div>
-          <span className="text-xl font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400 uppercase">
-            NhutCoder <span className="text-teal-500">Team</span>
+          <span className="text-xl font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-white via-[#16A394] to-[#1E3A8A] uppercase">
+            NhutCoder <span className="text-[#16A394]">Team</span>
           </span>
         </div>
         
         {/* Desktop Nav */}
         <nav className="hidden md:flex gap-12 items-center">
           {['About', 'Projects', 'Services'].map((item) => (
-            <a key={item} href={`#${item.toLowerCase()}`} className="text-xs font-bold hover:text-teal-400 transition-colors uppercase tracking-[0.2em] text-slate-400">{item}</a>
+            <a key={item} href={`#${item.toLowerCase()}`} className="text-xs font-bold hover:text-[#16A394] transition-colors uppercase tracking-[0.2em] text-slate-400">{item}</a>
           ))}
-          <button className="px-6 py-2.5 rounded-full border border-teal-500/30 bg-teal-500/10 backdrop-blur-md text-xs font-bold hover:bg-teal-500 hover:text-white transition-all text-teal-400 uppercase tracking-widest">
+          <button className="px-6 py-2.5 rounded-full border border-[#16A394]/30 bg-[#16A394]/10 backdrop-blur-md text-xs font-bold hover:bg-[#16A394] hover:text-white transition-all text-[#16A394] uppercase tracking-widest">
             Contact
           </button>
         </nav>
 
         {/* Mobile Nav Toggle */}
         <button 
-          className="md:hidden text-teal-400 p-2.5 border border-teal-500/20 bg-slate-900/40 rounded-xl backdrop-blur-sm"
+          className="md:hidden text-[#16A394] p-2.5 border border-[#16A394]/20 bg-slate-900/40 rounded-xl backdrop-blur-sm"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -62,9 +65,9 @@ export default function App() {
             className="absolute top-24 left-4 right-4 md:hidden bg-slate-900/90 backdrop-blur-2xl border border-white/5 rounded-3xl flex flex-col gap-6 px-8 py-10 z-[100] shadow-2xl"
           >
             {['About', 'Projects', 'Services'].map((item) => (
-              <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setIsMobileMenuOpen(false)} className="text-sm font-bold uppercase tracking-[0.3em] text-slate-300 hover:text-teal-400 transition-colors">{item}</a>
+              <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setIsMobileMenuOpen(false)} className="text-sm font-bold uppercase tracking-[0.3em] text-slate-300 hover:text-[#16A394] transition-colors">{item}</a>
             ))}
-            <button onClick={() => setIsMobileMenuOpen(false)} className="w-full text-center py-4 rounded-2xl bg-teal-600 text-white font-bold uppercase tracking-widest text-xs shadow-xl shadow-teal-900/40">
+            <button onClick={() => setIsMobileMenuOpen(false)} className="w-full text-center py-4 rounded-2xl bg-[#16A394] text-white font-bold uppercase tracking-widest text-xs shadow-xl shadow-teal-900/40">
               Get in Touch
             </button>
           </motion.nav>
@@ -82,14 +85,14 @@ export default function App() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
             >
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/20 w-fit mb-8 mx-auto lg:mx-0 shadow-inner">
-                <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse ring-4 ring-teal-500/20"></span>
-                <span className="text-[10px] font-black text-teal-400 uppercase tracking-[0.2em]">Creative Agency 2026</span>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#16A394]/10 border border-[#16A394]/20 w-fit mb-8 mx-auto lg:mx-0 shadow-inner">
+                <span className="w-2 h-2 rounded-full bg-[#16A394] animate-pulse ring-4 ring-[#16A394]/20"></span>
+                <span className="text-[10px] font-black text-[#16A394] uppercase tracking-[0.2em]">Creative Agency 2026</span>
               </div>
               
               <h1 className="text-5xl sm:text-7xl md:text-8xl font-black leading-[0.85] tracking-tighter mb-4">
                 BUILDING <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-emerald-500 to-orange-500">DIGITAL</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#16A394] via-[#0D9488] to-[#F97316]">DIGITAL</span>
                 <span className="block text-slate-200 mt-2">DREAMS</span>
               </h1>
               
@@ -104,10 +107,10 @@ export default function App() {
               transition={{ duration: 1, delay: 0.5 }}
               className="flex flex-col sm:flex-row gap-5 mt-4 w-full sm:w-auto"
             >
-              <button className="px-10 py-5 bg-orange-600 text-white font-black rounded-2xl shadow-2xl shadow-orange-500/20 hover:scale-105 transition-all text-sm uppercase tracking-widest">
+              <button className="px-10 py-5 bg-[#F97316] text-white font-black rounded-2xl shadow-2xl shadow-orange-500/20 hover:scale-105 transition-all text-sm uppercase tracking-widest">
                 Start a Project
               </button>
-              <button className="px-10 py-5 bg-slate-900 border border-slate-800 hover:border-teal-500/50 text-slate-300 font-bold rounded-2xl transition-all text-sm uppercase tracking-widest backdrop-blur-xl">
+              <button className="px-10 py-5 bg-slate-900 border border-slate-800 hover:border-[#16A394]/50 text-slate-300 font-bold rounded-2xl transition-all text-sm uppercase tracking-widest backdrop-blur-xl">
                 View Portfolio
               </button>
             </motion.div>
@@ -139,16 +142,16 @@ export default function App() {
             className="lg:col-span-6 relative w-full h-[400px] sm:h-[500px] lg:h-[700px] flex justify-center items-center order-1 lg:order-2"
           >
             {/* Geometric Decorative Elements */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] sm:w-full sm:h-full border border-teal-500/5 rounded-full pointer-events-none -z-10" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] border border-orange-500/5 rounded-full pointer-events-none -z-10 animate-spin-slow" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] sm:w-full sm:h-full border border-[#16A394]/5 rounded-full pointer-events-none -z-10" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] border border-[#F97316]/5 rounded-full pointer-events-none -z-10 animate-spin-slow" />
             
             <ThreeCanvas />
             
             {/* Tech Metadata overlay (positioned for minimal intrusion) */}
             <div className="absolute top-0 right-0 p-8 hidden sm:block pointer-events-none">
-              <div className="flex flex-col gap-1 border-r-2 border-teal-500 pr-4">
+              <div className="flex flex-col gap-1 border-r-2 border-[#16A394] pr-4">
                 <span className="text-[10px] font-mono text-slate-600 uppercase tracking-widest">System_Status</span>
-                <span className="text-xs font-mono text-teal-400">READY_TEAL_V1</span>
+                <span className="text-xs font-mono text-[#16A394]">READY_TEAL_V1</span>
               </div>
             </div>
           </motion.div>
@@ -171,7 +174,7 @@ export default function App() {
         
         <div className="flex gap-6">
           {['TW', 'GH', 'LI'].map((social) => (
-            <div key={social} className="w-10 h-10 rounded-xl border border-slate-800 flex items-center justify-center text-slate-500 hover:text-teal-400 hover:border-teal-500/40 transition-all cursor-pointer group">
+            <div key={social} className="w-10 h-10 rounded-xl border border-slate-800 flex items-center justify-center text-slate-500 hover:text-[#16A394] hover:border-[#16A394]/40 transition-all cursor-pointer group">
               <span className="text-[10px] font-black group-hover:scale-110 transition-transform">{social}</span>
             </div>
           ))}

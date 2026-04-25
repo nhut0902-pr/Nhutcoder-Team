@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+  --animate-spin-slow: spin 8s linear infinite;
+  --color-brand-teal: #16A394;
+  --color-brand-orange: #F97316;
+  --color-brand-blue: #1E3A8A;
+}
+
+:root {
+  background: #010a13;
+}
