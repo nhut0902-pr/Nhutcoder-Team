@@ -1,5 +1,7 @@
 node_modules
 .next
 dist
+out
+test-results
 *.log
 .DS_Store

@@ -6,15 +6,16 @@ import { useState } from 'react';
 import Image from 'next/image';
 import HeroAnimation from '../components/HeroAnimation';
 import Notification from '../components/Notification';
+import { ThemeToggle } from '../components/ThemeToggle';
 
 export default function Page() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <div className="bg-[#010a13] text-slate-100 min-h-screen relative overflow-x-hidden font-sans flex flex-col selection:bg-teal-500/30">
+    <div className="bg-white dark:bg-[#010a13] text-slate-900 dark:text-slate-100 min-h-screen relative overflow-x-hidden font-sans flex flex-col selection:bg-teal-500/30 transition-colors duration-300">
       {/* Background Atmosphere - Updated to Teal/Orange */}
-      <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-[#16A394]/10 rounded-full blur-[150px] pointer-events-none animate-pulse" />
-      <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-[#F97316]/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-[#16A394]/10 dark:bg-[#16A394]/10 rounded-full blur-[150px] pointer-events-none animate-pulse" />
+      <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-[#F97316]/5 dark:bg-[#F97316]/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9IiMzMzQxNTUiIGZpbGwtb3BhY2l0eT0iMC4xNSIv+PC9zdmc+')] opacity-30 pointer-events-none" />
 
       {/* --- HEADER --- */}
@@ -35,7 +36,7 @@ export default function Page() {
                className="object-contain"
              />
           </div>
-          <span className="text-xl font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-white via-[#16A394] to-[#1E3A8A] uppercase">
+          <span className="text-xl font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-slate-900 dark:from-white via-[#16A394] to-[#1E3A8A] uppercase">
             Nhutcoder <span className="text-[#16A394]">Team</span>
           </span>
         </div>
@@ -43,20 +44,24 @@ export default function Page() {
         {/* Desktop Nav */}
         <nav className="hidden md:flex gap-12 items-center">
           {['About', 'Projects', 'Services'].map((item) => (
-            <a key={item} href={`#${item.toLowerCase()}`} className="text-xs font-bold hover:text-[#16A394] transition-colors uppercase tracking-[0.2em] text-slate-400">{item}</a>
+            <a key={item} href={`#${item.toLowerCase()}`} className="text-xs font-bold hover:text-[#16A394] transition-colors uppercase tracking-[0.2em] text-slate-400 dark:text-slate-400">{item}</a>
           ))}
+          <ThemeToggle />
           <button className="px-6 py-2.5 rounded-full border border-[#16A394]/30 bg-[#16A394]/10 backdrop-blur-md text-xs font-bold hover:bg-[#16A394] hover:text-white transition-all text-[#16A394] uppercase tracking-widest">
             Contact
           </button>
         </nav>
 
         {/* Mobile Nav Toggle */}
-        <button 
-          className="md:hidden text-[#16A394] p-2.5 border border-[#16A394]/20 bg-slate-900/40 rounded-xl backdrop-blur-sm"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        <div className="flex md:hidden items-center gap-3">
+          <ThemeToggle />
+          <button
+            className="text-[#16A394] p-2.5 border border-[#16A394]/20 bg-white/50 dark:bg-slate-900/40 rounded-xl backdrop-blur-sm"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
 
         {/* Mobile Menu Dropdown */}
         {isMobileMenuOpen && (
@@ -94,7 +99,7 @@ export default function Page() {
               <h1 className="text-5xl sm:text-7xl md:text-8xl font-black leading-[0.85] tracking-tighter mb-4">
                 BUILDING <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#16A394] via-[#0D9488] to-[#F97316]">DIGITAL</span>
-                <span className="block text-slate-200 mt-2">DREAMS</span>
+                <span className="block text-slate-800 dark:text-slate-200 mt-2">DREAMS</span>
               </h1>
               
               <p className="text-base sm:text-lg text-slate-400 max-w-lg leading-relaxed mt-8 font-medium italic opacity-80">
@@ -111,7 +116,7 @@ export default function Page() {
               <button className="px-10 py-5 bg-[#F97316] text-white font-black rounded-2xl shadow-2xl shadow-orange-500/20 hover:scale-105 transition-all text-sm uppercase tracking-widest">
                 Start a Project
               </button>
-              <button className="px-10 py-5 bg-slate-900 border border-slate-800 hover:border-[#16A394]/50 text-slate-300 font-bold rounded-2xl transition-all text-sm uppercase tracking-widest backdrop-blur-xl">
+              <button className="px-10 py-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-[#16A394]/50 text-slate-600 dark:text-slate-300 font-bold rounded-2xl transition-all text-sm uppercase tracking-widest backdrop-blur-xl shadow-lg">
                 View Portfolio
               </button>
             </motion.div>
@@ -120,15 +125,22 @@ export default function Page() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.8 }}
-              className="grid grid-cols-2 sm:grid-cols-3 gap-10 mt-16 pt-12 border-t border-slate-800/50 w-full"
+              className="grid grid-cols-2 sm:grid-cols-4 gap-6 md:gap-10 mt-16 pt-12 border-t border-slate-200 dark:border-slate-800/50 w-full"
             >
               {[
+                { val: 'nhut0902-pr', label: 'GitHub', link: 'https://github.com/nhut0902-pr' },
+                { val: '2000+', label: 'Stars' },
                 { val: '50+', label: 'Products' },
-                { val: '12k', label: 'Commits' },
-                { val: '100%', label: 'Passion' }
+                { val: '12k', label: 'Commits' }
               ].map((stat, idx) => (
-                <div key={idx}>
-                  <div className="text-3xl sm:text-4xl font-black text-white tracking-tighter">{stat.val}</div>
+                <div key={idx} className="flex flex-col">
+                  {stat.link ? (
+                    <a href={stat.link} target="_blank" rel="noopener noreferrer" className="text-xl sm:text-2xl md:text-3xl font-black text-[#16A394] hover:text-[#F97316] transition-colors tracking-tighter truncate">
+                      {stat.val}
+                    </a>
+                  ) : (
+                    <div className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 dark:text-white tracking-tighter">{stat.val}</div>
+                  )}
                   <div className="text-[10px] text-slate-500 uppercase tracking-[0.3em] mt-2 font-bold">{stat.label}</div>
                 </div>
               ))}
@@ -161,7 +173,7 @@ export default function Page() {
       </main>
 
       {/* --- FOOTER --- */}
-      <footer className="relative z-10 px-6 lg:px-12 py-8 flex flex-col md:flex-row justify-between items-center bg-slate-950/40 backdrop-blur-3xl border-t border-white/5 mt-auto">
+      <footer className="relative z-10 px-6 lg:px-12 py-8 flex flex-col md:flex-row justify-between items-center bg-white/40 dark:bg-slate-950/40 backdrop-blur-3xl border-t border-slate-200 dark:border-white/5 mt-auto">
         <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 mb-6 md:mb-0">
           <div className="flex items-center gap-2 text-[10px] font-black text-slate-500 uppercase tracking-[0.4em]">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
