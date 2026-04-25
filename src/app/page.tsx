@@ -4,7 +4,7 @@ import { motion } from 'motion/react';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import Image from 'next/image';
-import ThreeCanvas from '../components/ThreeCanvas';
+import HeroAnimation from '../components/HeroAnimation';
 import Notification from '../components/Notification';
 
 export default function Page() {
@@ -146,7 +146,7 @@ export default function Page() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] sm:w-full sm:h-full border border-[#16A394]/5 rounded-full pointer-events-none -z-10" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] border border-[#F97316]/5 rounded-full pointer-events-none -z-10 animate-spin-slow" />
             
-            <ThreeCanvas />
+            <HeroAnimation />
             
             {/* Tech Metadata overlay (positioned for minimal intrusion) */}
             <div className="absolute top-0 right-0 p-8 hidden sm:block pointer-events-none">
