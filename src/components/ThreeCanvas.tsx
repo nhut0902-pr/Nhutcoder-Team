@@ -1,6 +1,6 @@
 "use client";
 import React, { Suspense, Component, ErrorInfo, ReactNode } from 'react';
-import Spline from '@splinetool/react-spline';
+import Spline from '@splinetool/react-spline/next';
 
 class SplineErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
   constructor(props: { children: ReactNode }) {
@@ -54,7 +54,7 @@ export default function ThreeCanvas() {
           </div>
         }>
           <Spline
-            scene="https://prod.spline.design/0rw2a6Mqs81w2UIM4w7UhPc1/scene.splinecode"
+            scene="https://prod.spline.design/Le82x5zrY659uwT9/scene.splinecode"
           />
         </Suspense>
       </SplineErrorBoundary>

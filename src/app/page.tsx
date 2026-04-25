@@ -5,6 +5,7 @@ import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import Image from 'next/image';
 import ThreeCanvas from '../components/ThreeCanvas';
+import Notification from '../components/Notification';
 
 export default function Page() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -180,6 +181,7 @@ export default function Page() {
           ))}
         </div>
       </footer>
+      <Notification />
     </div>
   );
 }
