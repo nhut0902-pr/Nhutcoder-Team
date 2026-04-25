@@ -28,14 +28,14 @@ export default function Page() {
           <div className="relative w-12 h-12 flex items-center justify-center group-hover:scale-110 transition-transform overflow-hidden rounded-lg">
              <Image
                src="/logo.png"
-               alt="NhutCoder Team Logo"
+               alt="Nhutcoder Team Logo"
                width={48}
                height={48}
                className="object-contain"
              />
           </div>
           <span className="text-xl font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-white via-[#16A394] to-[#1E3A8A] uppercase">
-            NhutCoder <span className="text-[#16A394]">Team</span>
+            Nhutcoder <span className="text-[#16A394]">Team</span>
           </span>
         </div>
         
@@ -97,7 +97,7 @@ export default function Page() {
               </h1>
               
               <p className="text-base sm:text-lg text-slate-400 max-w-lg leading-relaxed mt-8 font-medium italic opacity-80">
-                NhutCoder Team - Nâng tầm thương hiệu của bạn với công nghệ 3D và giải pháp lập trình hiện đại nhất.
+                Nhutcoder Team - Nâng tầm thương hiệu của bạn với công nghệ 3D và giải pháp lập trình hiện đại nhất.
               </p>
             </motion.div>
 
