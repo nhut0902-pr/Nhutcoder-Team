@@ -1,10 +1,13 @@
 import pkg from 'pg';
 const { Pool } = pkg;
-import dotenv from 'dotenv';
 
-dotenv.config({ path: '.env.local' });
-
+// Use standard process.env.DATABASE_URL
 const connectionString = process.env.DATABASE_URL;
+
+if (!connectionString) {
+  console.error('DATABASE_URL is not defined in environment variables.');
+  process.exit(1);
+}
 
 const pool = new Pool({
   connectionString,
