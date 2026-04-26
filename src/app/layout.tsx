@@ -2,8 +2,6 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { ThemeProvider } from '../components/ThemeProvider';
 import Notification from '../components/Notification';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 
 export const metadata: Metadata = {
   title: 'Nhutcoder Team',

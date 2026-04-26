@@ -7,6 +7,7 @@ export default function Footer() {
     { name: 'Source', href: '/source-code' },
     { name: 'Support', href: '/support' },
     { name: 'Feedback', href: '/feedback' },
+    { name: 'Admin', href: '/admin' },
   ];
 
   return (
