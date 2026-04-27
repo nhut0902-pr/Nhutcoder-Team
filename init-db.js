@@ -11,6 +11,9 @@ if (!connectionString) {
 
 const pool = new Pool({
   connectionString,
+  ssl: {
+    rejectUnauthorized: true,
+  }
 });
 
 async function init() {
